@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 import { LogService } from '../../core/services/log.service';
-import { ITrack, Track } from '../../core/models/track.model';
+import { ITrack } from '../../core/models/track.model';
 import { PlayerService } from '../services/player.service';
 
 
@@ -17,15 +17,12 @@ import { PlayerService } from '../services/player.service';
     </ng-template>
   </ListView>`
 })
-export class TrackListComponent implements OnInit {
+export class TrackListComponent {
   @Input() row: string;
   @Input() col: string;
  
-  constructor(public playerService: PlayerService, private logService: LogService) { }
-
-  ngOnInit() {
-    console.log(`track-list: ${this.row}`, this.col);
-  }
+  constructor(public playerService: PlayerService, 
+    private logService: LogService) { }
   
   public record(track: ITrack) {
     this.logService.inspect(track);
